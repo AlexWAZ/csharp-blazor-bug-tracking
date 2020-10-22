@@ -9,8 +9,6 @@
             <th>Priority</th>
         </tr>
     </thead>
-
-
     @foreach (Bug Bug in Bugs)
     {
         <tr>
@@ -41,11 +39,6 @@
 
     protected override void OnInitialized()
     {
-        //base.OnInitialized();
-        //Bugs = BugService.GetBugs();
         Bugs = BugService.GetBugs().OrderBy(x => x.Priority).ToList();
-
-        
-
     }
 }
