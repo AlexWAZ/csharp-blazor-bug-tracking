@@ -3,6 +3,12 @@
 <h3>Add New Bug</h3>
 
 <EditForm Model="AddBug" OnValidSubmit="HandleValidSubmit">
+
+    @*Add this to apply data validation to the form*@
+    <DataAnnotationsValidator />
+    @*This will display any form validation errors*@
+    <ValidationSummary />
+
     <InputText id="Title" @bind-Value="@AddBug.Title" placeholder="Enter Title" />
     <InputText id="Description" @bind-Value="@AddBug.Description" placeholder="Enter Description" />
     <InputNumber id="Priority" @bind-Value="@AddBug.Priority" placeholder="Enter Priority" />
@@ -19,11 +25,12 @@
     [Inject]
     public NavigationManager NavService { get; set; }
 
-
+    
     protected void HandleValidSubmit()
     {
         BugService.AddBug(AddBug);
         NavService.NavigateTo("");
+
     }
 
 }
